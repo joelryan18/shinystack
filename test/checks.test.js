@@ -109,4 +109,3 @@ test("ignored directories are not scanned", () => {
   assert.equal(report.checks[8].found, false);
   assert.equal(report.checks[10].found, false);
 });
-test/checks.test.js
