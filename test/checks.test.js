@@ -109,7 +109,6 @@ test("ignored directories are not scanned", () => {
   assert.equal(report.checks[8].found, false);
   assert.equal(report.checks[10].found, false);
 });
-
 test("version option prints the package version", () => {
   const result = spawnSync(
     process.execPath,
@@ -121,4 +120,3 @@ test("version option prints the package version", () => {
   assert.equal(result.stderr, "");
   assert.equal(result.stdout.trim(), "0.1.0");
 });
-
