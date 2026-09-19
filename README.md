@@ -75,6 +75,22 @@ ShinyStack reports findings; it does not modify the repository being audited.
 
 The command exits with code `1` when `--strict` finds an incomplete check or when the score is below `--fail-under`. This makes it suitable for a required CI check.
 
+## Exit codes
+
+ShinyStack returns these exit codes:
+
+| Code | Meaning |
+| --- | --- |
+| 0 | The audit completed successfully. |
+| 1 | --strict found an incomplete check, or the score is below --fail-under. |
+| 2 | The command-line arguments are invalid. |
+
+For example, this command returns code 1 when the repository score is below
+80 percent:
+
+```bash
+node src/cli.js --fail-under 80
+
 ## Contributing
 
 The project is intentionally small and dependency-free. See [CONTRIBUTING.md](CONTRIBUTING.md) for local setup, design notes, and good first contributions.
