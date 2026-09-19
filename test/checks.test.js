@@ -92,7 +92,6 @@ test("markdown is accepted as an alias for md", () => {
   assert.match(result.stdout, /\| Status \| Check \| Details \|/);
 });
 
-
 test("ignored directories are not scanned", () => {
   const root = temporaryRepository();
 
@@ -109,6 +108,21 @@ test("ignored directories are not scanned", () => {
   assert.equal(report.checks[8].found, false);
   assert.equal(report.checks[10].found, false);
 });
+
+test("invalid format values are rejected", () => {
+  const result = spawnSync(
+    process.execPath,
+    [cliPath, "--format", "xml"],
+    { encoding: "utf8" }
+  );
+
+  assert.equal(result.status, 2);
+  assert.match(
+    result.stderr,
+    /--format must be text, json, or md/
+  );
+});
+
 test("version option prints the package version", () => {
   const result = spawnSync(
     process.execPath,
